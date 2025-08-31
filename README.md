@@ -71,7 +71,6 @@ uvicorn app:app --reload --host 0.0.0.0 --port 8000
 - Swagger UI: http://localhost:8000/docs
 
 Key endpoints:
-- GET `/health`
 - POST `/ingest` body `{ "urls": ["https://..."] }`
 - POST `/rate` body:
 ```json
@@ -124,5 +123,3 @@ Environment variables (backend):
 - 401 with LangSmith: disable tracing or set proper env.
 - Blocked web loads: set `USER_AGENT` in backend .env.
 
-## License
-MIT
