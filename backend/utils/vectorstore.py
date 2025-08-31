@@ -17,7 +17,7 @@ _vectorstore: Chroma | None = None
 def get_embeddings() -> OpenAIEmbeddings:
     global _embeddings
     if _embeddings is None:
-        _embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
+        _embeddings = OpenAIEmbeddings(model=settings.EMBEDDING_MODEL)
     return _embeddings
 
 

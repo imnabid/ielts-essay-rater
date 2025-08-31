@@ -40,7 +40,13 @@ def load_webpages(urls: Iterable[str]) -> List[Document]:
     to_fetch = [u for u in urls if u]
     if not to_fetch:
         return out
-    loader = WebBaseLoader(to_fetch)
+    # Use an explicit User-Agent to avoid 403s and warnings
+    user_agent = os.getenv(
+        "USER_AGENT",
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0 Safari/537.36",
+    )
+    # WebBaseLoader expects header_template as a dict
+    loader = WebBaseLoader(to_fetch, header_template={"User-Agent": user_agent})
     for d in loader.load():
         d.metadata = d.metadata or {}
         d.metadata["source"] = _norm_source(d.metadata.get("source", d.metadata.get("url", "web")))

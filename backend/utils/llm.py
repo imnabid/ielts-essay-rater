@@ -5,8 +5,7 @@ from config import settings
 
 
 def get_chat_llm() -> ChatOpenAI:
-    # Uses OpenAI-compatible endpoint; supports Azure/OpenRouter if envs are set
     model = settings.MODEL
     temperature = settings.TEMPERATURE
     # ChatOpenAI reads OPENAI_* env vars automatically
-    return ChatOpenAI(model=model, temperature=temperature)
+    return ChatOpenAI(model=model, temperature=temperature, api_key=settings.OPENAI_API_KEY)

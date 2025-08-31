@@ -10,9 +10,16 @@ def build_recommendation_chain(llm: ChatOpenAI):
     template = (
         "You are a writing tutor. Using the IELTS context and band descriptors, propose concrete improvements.\n"
         "Purpose: Provide a revised essay and bullet-point suggestions grounded in retrieved examples.\n"
-        "Data: Title: {title}\nEssay:\n"""{essay_text}"""\n\nContext:\n"""{context}"""\n\n"
+        "Data:\n"
+        "Title: {title}\n"
+        "Essay:\n{essay_text}\n\n"
+        "Context:\n{context}\n\n"
         "Output: JSON with keys: improved_essay, bullet_point_suggestions, high_value_patterns.\n"
-        "Rules:\n- Keep the revised essay <= 280 words unless the prompt requires otherwise.\n- Mimic formal academic tone suitable for IELTS.\n- Use patterns observed in context.\n- No extra text outside JSON.\n"
+        "Rules:\n"
+        "- Keep the revised essay <= 280 words unless the prompt requires otherwise.\n"
+        "- Mimic formal academic tone suitable for IELTS.\n"
+        "- Use patterns observed in context.\n"
+        "- No extra text outside JSON.\n"
     )
     prompt = PromptTemplate.from_template(template)
     structured_llm = llm.with_structured_output(RecommendationResult)

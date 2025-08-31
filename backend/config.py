@@ -8,8 +8,7 @@ class Settings:
     OPENAI_API_BASE: str | None = os.getenv("OPENAI_API_BASE")
     OPENAI_API_TYPE: str | None = os.getenv("OPENAI_API_TYPE")
     OPENAI_API_VERSION: str | None = os.getenv("OPENAI_API_VERSION")
-
-    ANTHROPIC_API_KEY: str | None = os.getenv("ANTHROPIC_API_KEY")
+    EMBEDDING_MODEL: str | None = os.getenv("EMBEDDING_MODEL")
 
     LANGSMITH_API_KEY: str | None = os.getenv("LANGSMITH_API_KEY")
     LANGSMITH_TRACING: str | None = os.getenv("LANGSMITH_TRACING", "false")
@@ -19,7 +18,7 @@ class Settings:
     VECTORSTORE_DIR: str = os.getenv("VECTORSTORE_DIR", "data/vectorstore")
     DATA_SOURCES_DIR: str = os.getenv("DATA_SOURCES_DIR", "data/sources")
 
-    MODEL: str = os.getenv("MODEL", "gpt-4o-mini")
+    MODEL: str = os.getenv("MODEL", "gpt-4.1-nano")
     TEMPERATURE: float = float(os.getenv("TEMPERATURE", "0.2"))
 
 settings = Settings()
