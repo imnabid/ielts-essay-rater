@@ -39,7 +39,6 @@ def add_documents(docs: Iterable[Document]) -> int:
     if not doc_list:
         return 0
     vs.add_documents(doc_list)
-    vs.persist()
     return len(doc_list)
 
 

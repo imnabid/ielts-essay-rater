@@ -32,9 +32,10 @@ async def health():
 
 @app.post("/ingest", response_model=IngestResponse)
 async def ingest(req: IngestRequest):
-    local_docs = load_pdfs_from_dir(settings.DATA_SOURCES_DIR)
+    if not req.urls or len([u for u in req.urls if (u or '').strip()]) == 0:
+        raise HTTPException(status_code=400, detail="No URLs provided")
     web_docs = load_webpages(req.urls)
-    added = rag_chain.ingest(local_docs + web_docs)
+    added = rag_chain.ingest(web_docs)
     total = doc_count()
     return IngestResponse(added_docs=added, total_docs=total, message="Ingestion complete")
 
