@@ -73,7 +73,6 @@ async def rate(req: RateRequest):
     return RateResponse(rating=rating, recommendation=reco, retrieved=retrieved)
 
 
-# Optional: simple root
 @app.get("/")
 async def root():
     return {"message": "IELTS Essay Rater API. See /docs for Swagger UI."}

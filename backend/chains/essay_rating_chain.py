@@ -4,11 +4,10 @@ from typing import List
 from langchain_core.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 
-from models.schemas import RatingResult, BandScores, CriterionFeedback
+from models.schemas import RatingResult
 
 
 def build_rating_chain(llm: ChatOpenAI):
-    # Avoid nested triple quotes in f-strings; use simple placeholders
     template = (
         "You are an IELTS Writing Task 2 examiner. Rate the essay strictly per official band descriptors.\n"
         "Follow PDO: Purpose, Data, Output.\n\n"
