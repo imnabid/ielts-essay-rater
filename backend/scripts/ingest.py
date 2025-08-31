@@ -37,11 +37,7 @@ essay_links = [
 ]
 
 def main():
-    urls =  [
-        "https://www.ieltsadvantage.com/2023/01/15/ielts-writing-task-2-sample-essays/",
-        # "https://ted-ielts.com/cambridge-ielts-17/#google_vignette",
-        
-    ]
+    urls = essay_links 
     local_docs = load_pdfs_from_dir(settings.DATA_SOURCES_DIR)
     web_docs = load_webpages(urls)
     added = ingest(web_docs)
