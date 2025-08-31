@@ -2,6 +2,15 @@
 
 FastAPI + LangChain RAG backend and a React (Vite + Tailwind) frontend to rate IELTS Task 2 essays, provide structured feedback, and generate improved versions.
 
+## Screenshots
+![App demo showing rating and recommendations](demo/1.png)
+
+![Home - Rate Essay](demo/2.png)
+
+![Results - Recommendations](demo/3.png)
+
+![Ingest URLs](demo/4.png)
+
 ## Features
 - Rate essays with structured IELTS band scores (Task Response, Coherence & Cohesion, Lexical Resource, Grammar Range & Accuracy, Overall)
 - Actionable strengths, weaknesses, prioritized actions, and estimated band if addressed
@@ -46,8 +55,14 @@ pip install -r requirements.txt
 ```
 - Ingest sources (optional URLs; PDFs go in `backend/data/sources/`):
 ```cmd
-python scripts\ingest.py --skip-web
+# Ingest PDFs found under backend/data/sources
+python scripts\ingest.py
+
+# Ingest specific URLs
 python scripts\ingest.py https://www.ielts.org/about-ielts/ielts-assessment-criteria
+
+# Ingest only the provided URLs (skip PDFs)
+python scripts\ingest.py --skip-pdf https://example.com/a https://example.com/b
 ```
 - Run the API server:
 ```cmd
